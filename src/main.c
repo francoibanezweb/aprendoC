@@ -20,6 +20,13 @@ int main() {
         printf("3. Ejecutar 01_03\n");
         printf("4. Ejecutar 01_04\n");
         printf("5. Ejecutar 01_05\n");
+        printf("6. Ejecutar 01_06\n");
+        printf("7. Ejecutar 01_07\n");
+        printf("8. Ejecutar 01_08\n");
+        printf("9. Ejecutar 01_09\n");
+        printf("10. Ejecutar 01_10\n");
+        printf("11. Ejecutar 01_11\n");
+        printf("12. Ejecutar 01_12\n");
         printf("0. Salir\n");
 
         printf("Elija una opción: ");
@@ -40,6 +47,27 @@ int main() {
                 break;
             case 5:
                 system("./src/01_dialogo_con_el_usuario/ej_05");
+                break;
+            case 6:
+                system("./src/01_dialogo_con_el_usuario/ej_06");
+                break;
+            case 7:
+                system("./src/01_dialogo_con_el_usuario/ej_07");
+                break;
+            case 8:
+                system("./src/01_dialogo_con_el_usuario/ej_08");
+                break;
+            case 9:
+                system("./src/01_dialogo_con_el_usuario/ej_09");
+                break;
+            case 10:
+                system("./src/01_dialogo_con_el_usuario/ej_10");
+                break;
+            case 11:
+                system("./src/01_dialogo_con_el_usuario/ej_11");
+                break;
+            case 12:
+                system("./src/01_dialogo_con_el_usuario/ej_12");
                 break;
             case 0:
                 return 0;
