@@ -125,7 +125,7 @@ int main()
 
     closedir(dir);
 
-    while (1)
+    while (1) /* Chapter Menu Loop */
     {
         clearScreen();
         printf("== MENU ==\n");
@@ -135,105 +135,82 @@ int main()
             printf("%d. Seleccionar Tema %s\n", i + 1, chapter_names[i]);
         }
 
-        printf("Q. Salir\n");
-        printf("Elija una opción de capítulo: ");
+        printf("0. Salir\n");
+        printf("Elija un Tema: ");
 
         int chapter_option;
-        char choice;
+        int chapter_choice;
+        scanf(" %d", &chapter_choice);
 
-        if (scanf(" %c", &choice) == 1) // Read a character input
+        if (chapter_choice == 0)
         {
-            if (choice == '0')
-            {
-                break;
-            }
-            else if (choice == 'q' || choice == 'Q') // Handle 'Q' or 'q'
-            {
-                break;
-            }
-            else if (isdigit(choice))
-            {
-                // Convert the character input to an integer
-                chapter_option = choice - '0';
-                // ... (rest of the code)
-                char chapter_dir[100];
-                snprintf(chapter_dir, sizeof(chapter_dir), "%s/%s", src_dir,
-                         chapter_names[chapter_option - 1]);
+            break; // Exit the chapter menu
+        }
+        else if (chapter_choice >= 1 && chapter_choice <= total_chapters)
+        {
+            chapter_option = chapter_choice - 1;
+            char chapter_dir[100];
+            snprintf(chapter_dir, sizeof(chapter_dir), "%s/%s", src_dir,
+                     chapter_names[chapter_option]);
 
-                for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 100; i++)
+            {
+                exercise_names[i] = NULL;
+            }
+
+            total_exercises = countFilesInDir(chapter_dir);
+            listExercises(chapter_dir, exercise_names);
+
+            int exercise_choice;
+
+            while (1) /* Exercise Menu Loop */
+            {
+                clearScreen();
+                printf("== MENU ==\n");
+
+                for (int i = 0; i < total_exercises; i++)
                 {
-                    exercise_names[i] = NULL;
+                    if (exercise_names[i] != NULL)
+                    {
+                        printf("%d. Ejecutar %s\n", i + 1,
+                               exercise_names[i]);
+                    }
                 }
 
-                total_exercises = countFilesInDir(chapter_dir);
-                listExercises(chapter_dir, exercise_names);
+                printf("0. Volver al Menú de Capítulos\n");
 
-                int option;
+                printf("Elija una opción: ");
 
-                printf("Inside Inner Loop\n");
+                scanf(" %d", &exercise_choice);
+                while (getchar() != '\n')
+                    ; /* Clear input buffer */
 
-                while (1)
+                if (exercise_choice == 0)
                 {
-                    clearScreen();
-                    printf("== MENU ==\n");
+                    break; // Exit the exercise menu
+                }
+                else if (exercise_choice >= 1 &&
+                         exercise_choice <= total_exercises)
+                {
+                    char *exercise_name = exercise_names[exercise_choice - 1];
+                    char exercise_path[200];
+                    snprintf(exercise_path, sizeof(exercise_path),
+                             "%s/%s/%s", src_dir,
+                             chapter_names[chapter_option],
+                             exercise_name);
 
-                    for (int i = 0; i < total_exercises; i++)
-                    {
-                        if (exercise_names[i] != NULL)
-                        {
-                            printf("%d. Ejecutar %s\n", i + 1,
-                                   exercise_names[i]);
-                        }
-                    }
+                    printf("\n");
 
-                    printf("Q. Volver al Menú de Capítulos\n");
+                    int result = system(exercise_path);
 
-                    printf("Elija una opción: ");
-                    char option;
-                    scanf(" %c", &option);
+                    printf("\nEnter para continuar...\n");
                     while (getchar() != '\n')
-                        ; // Clear input buffer
-
-                    if (option == 'Q' || option == 'q')
-                    {
-                        break;
-                    }
-                    else if (isdigit(option))
-                    {
-                        int exercise_option = option - '0';
-                        if (exercise_option >= 1 &&
-                            exercise_option <= total_exercises)
-                        {
-                            // ... (rest of the code for exercise execution)
-                            char *exercise_name = exercise_names[exercise_option - 1];
-                            char exercise_path[200];
-                            snprintf(exercise_path, sizeof(exercise_path),
-                                     "%s/%s/%s", src_dir,
-                                     chapter_names[chapter_option - 1],
-                                     exercise_name);
-
-                            printf("\n");
-
-                            int result = system(exercise_path);
-
-                            printf("\nEnter para continuar...\n");
-                            while (getchar() != '\n')
-                                ; // Wait for the user to press Enter
-                        }
-                        else
-                        {
-                            printf("Opción no válida. Intente de nuevo.\n");
-                        }
-                    }
-                    else
-                    {
-                        printf("Opción no válida. Intente de nuevo.\n");
-                    }
+                        ; /* Wait for the user to press Enter */
                 }
-            }
-            else
-            {
-                printf("Opción no válida. Intente de nuevo.\n");
+                else
+                {
+                    printf("Opción no válida. Intente de nuevo.\n");
+                }
             }
         }
         else
@@ -242,7 +219,7 @@ int main()
         }
     }
 
-    // Free allocated memory for chapter_names and exercise_names
+    /* Free allocated memory for chapter_names and exercise_names */
     for (int i = 0; i < total_chapters; i++)
     {
         free(chapter_names[i]);
