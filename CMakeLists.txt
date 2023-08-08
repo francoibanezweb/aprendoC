@@ -3,8 +3,13 @@ project(aprendoC C)
 
 set(CMAKE_C_STANDARD 11)
 
-# Añadir la subcarpeta 01_dialogo_con_el_usuario al proyecto
 add_subdirectory(src/01_dialogo_con_el_usuario)
+add_subdirectory(src/02_control_de_la_secuencia_de_ejecucion_del_programa)
+add_subdirectory(src/03_numeros_y_tablas)
+add_subdirectory(src/04_numeros_y_tablas_las_3_en_raya)
+add_subdirectory(src/05_operaciones_con_palabras)
+add_subdirectory(src/06_direcciones_y_ficheros_en_disco)
+add_subdirectory(src/07_un_programa_para_practicar_la_agenda)
+add_subdirectory(src/08_prosiguiendo_con_el_aprendizaje_de_C)
 
-# Definir el ejecutable aprendoC después de agregar la subcarpeta
 add_executable(aprendoC src/main.c)

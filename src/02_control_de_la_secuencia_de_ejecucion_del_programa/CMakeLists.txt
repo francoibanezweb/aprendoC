@@ -1,0 +1,7 @@
+add_executable(ej_02_01 ej_01.c)
+add_executable(ej_02_02 ej_02.c)
+add_executable(ej_02_03 ej_03.c)
+add_executable(ej_02_04 ej_04.c)
+add_executable(ej_02_05 ej_05.c)
+add_executable(ej_02_06 ej_06.c)
+add_executable(ej_02_07 ej_07.c)
