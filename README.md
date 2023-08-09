@@ -4,4 +4,4 @@ varios programas escritos en C, tratando distintos temas de programación.
 
 
 <img src="./assets/img/aprendo_C_menu_01.webp" 
-style="height:500px;width:650px">
+width="600px" height="400px">
