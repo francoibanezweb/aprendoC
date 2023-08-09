@@ -5,7 +5,7 @@
 int main(){
 
   char carEjemp;           /* Utilización de scanf y printf */
-  printf("¿Qué desea carácter que aparezca en pantalla? ");
+  printf("¿Qué carácter desea que aparezca en pantalla? ");
   scanf("%c", &carEjemp);
   printf("\nEl carácter que ha tecleado es el %c. \n", carEjemp);
   return 0;
