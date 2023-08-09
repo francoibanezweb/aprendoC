@@ -8,7 +8,7 @@ void borrpant();
 
 int main()
 {
-  /* versión 4: impresión del código ASCII > */
+  /* versión 4: impresión del código ASCII */
   /* del carácter tecleado por el usuario */
   /* con posibilidad de repetir el proceso */
 
