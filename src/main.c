@@ -166,20 +166,20 @@ int main()
             while (1) /* Exercise Menu Loop */
             {
                 clearScreen();
-                printf("== MENU ==\n");
+                printf("\n\t\t\t== APRENDO_C 2023 @francoibanezweb ==\n");
 
                 for (int i = 0; i < total_exercises; i++)
                 {
                     if (exercise_names[i] != NULL)
                     {
-                        printf("%d. Ejecutar %s\n", i + 1,
-                               exercise_names[i]);
+                        printf("\n\t\t%d. Ejecutar %s\n", i + 1,
+                               exercise_names[i] + 9);
                     }
                 }
 
-                printf("0. Volver al Menú de Capítulos\n");
+                printf("\n\n\t\t0. VOLVER ATRÁS\n");
 
-                printf("Elija una opción: ");
+                printf("\n\n\t\tElija un programa > ");
 
                 scanf(" %d", &exercise_choice);
                 while (getchar() != '\n')
