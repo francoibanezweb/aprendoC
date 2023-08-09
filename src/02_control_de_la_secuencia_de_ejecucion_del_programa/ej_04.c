@@ -2,6 +2,7 @@
 | Ap.02, Ej.04 |
 ***************/
 #include <stdio.h>
+#include <stdlib.h>
 
 void borrpant();
 
@@ -35,10 +36,9 @@ int main()
 
 void borrpant()
 { /* borra la pantalla */
-  int contador;
-  while (contador != 25)
-  {
-    printf("\n");
-    contador = contador + 1;
-  }
+#ifdef _WIN32
+  system("cls");
+#else
+  system("clear");
+#endif
 }
