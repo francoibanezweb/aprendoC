@@ -135,7 +135,7 @@ int main()
             printf("\n\n\t\t%d. %s", i + 1, chapter_names[i] + 2);
         }
 
-        printf("\n\n\t\t0. SALIR");
+        printf("\n\n\n\t\t0. SALIR");
         printf("\n\n\t\tELIJA UN TEMA > ");
 
         int chapter_option;
