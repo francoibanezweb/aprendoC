@@ -128,7 +128,7 @@ int main()
     while (1) /* Chapter Menu Loop */
     {
         clearScreen();
-        printf("\n\t\t\t== APRENDO_C 2023 @francoibanezweb ==\n");
+        printf("\n\t\t\t== APRENDO_C 2023 @francoibanezweb ==\n\n");
 
         for (int i = 0; i < total_chapters; i++)
         {
