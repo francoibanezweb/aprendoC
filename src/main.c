@@ -128,15 +128,15 @@ int main()
     while (1) /* Chapter Menu Loop */
     {
         clearScreen();
-        printf("== MENU ==\n");
+        printf("\n\t\t\t== APRENDO_C 2023 @francoibanezweb ==\n");
 
         for (int i = 0; i < total_chapters; i++)
         {
-            printf("%d. Seleccionar Tema %s\n", i + 1, chapter_names[i]);
+            printf("\n\n\t\t%d. %s", i + 1, chapter_names[i] + 2);
         }
 
-        printf("0. Salir\n");
-        printf("Elija un Tema: ");
+        printf("\n\n\t\t0. SALIR");
+        printf("\n\n\t\tELIJA UN TEMA > ");
 
         int chapter_option;
         int chapter_choice;
