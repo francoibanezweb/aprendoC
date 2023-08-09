@@ -3,7 +3,8 @@
 ***************/
 #include <stdio.h>
 
-int main(){
+int main(){               /* introducir salarios semanales */
+                          /* programa escrito de la forma fácil */
   float salSem[52];
   int contador, numDeSem;
 
