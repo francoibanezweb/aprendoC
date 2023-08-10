@@ -168,8 +168,8 @@ void presPant() /* presentar en pantalla el tablero */
   printf("\n\t\t\tN     2    %c | %c | %c", casilla[1][0], casilla[1][1],
          casilla[1][2]);
   printf("\n\t\t\tE         -----------");
-  printf("\n\t\t\tA     3    %c | %c | %c\n\n", casilla[2][0], casilla[2][1],
-         casilla[2][2]);
+  printf("\n\t\t\tA     3    %c | %c | %c\n\n\n\n\n\n", casilla[2][0],
+         casilla[2][1], casilla[2][2]);
 }
 
 /****************
