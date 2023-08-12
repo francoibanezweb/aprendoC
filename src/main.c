@@ -16,6 +16,8 @@
 #define DT_DIR 4
 #endif
 
+void clearBuffer();
+
 void clearScreen()
 {
 #ifdef _WIN32
@@ -142,6 +144,8 @@ int main()
         int chapter_choice;
         scanf(" %d", &chapter_choice);
 
+        clearBuffer();
+
         if (chapter_choice == 0)
         {
             break; // Exit the chapter menu
@@ -182,8 +186,8 @@ int main()
                 printf("\n\n\t\tElija un programa > ");
 
                 scanf(" %d", &exercise_choice);
-                while (getchar() != '\n')
-                    ; /* Clear input buffer */
+
+                clearBuffer();
 
                 if (exercise_choice == 0)
                 {
@@ -226,4 +230,12 @@ int main()
     }
 
     return 0;
+}
+
+void clearBuffer()
+{
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF)
+  {
+  }
 }
