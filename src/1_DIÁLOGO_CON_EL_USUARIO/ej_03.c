@@ -6,6 +6,6 @@
 int main (){
     char charEjemp;              /* Impresión de un carácter */
     charEjemp = 'a';
-    printf("El carácter del ejemplo es %c. %n", charEjemp);
+    printf("El carácter del ejemplo es %c. \n", charEjemp);
     return 0;
 }
