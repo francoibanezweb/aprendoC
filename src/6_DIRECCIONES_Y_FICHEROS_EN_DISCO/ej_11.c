@@ -24,7 +24,7 @@ int main()
   int contaLet = 0;
   int contaPru = 0;
 
-  if ((puntFich = fopen("listapala.txt", "x")) == NULL)
+  if ((puntFich = fopen("listpala.txt", "x")) == NULL)
   {
     printf("Error de Disco: no puede abrirse ");
     printf("fichero de palabras");
