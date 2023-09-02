@@ -23,7 +23,8 @@ int main()
   filePtr = fopen("wordlist.txt", "a");
   if (filePtr == NULL)
   {
-    printf("Error de disco: No se puede abrir el archivo wordlist.txt .");
+    printf("Error de disco: No se puede abrir el archivo ");
+    printf("con la lista de palabras.");
     exit(1);
   }
 
