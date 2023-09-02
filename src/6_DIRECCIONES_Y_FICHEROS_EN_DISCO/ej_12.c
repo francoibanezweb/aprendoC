@@ -6,61 +6,55 @@
 #include <string.h>
 #include <ctype.h>
 
-void clearBuffer()
-{
-  int c;
-  while ((c = getchar()) != '\n' && c != EOF)
-  {
-  }
-}
+void clearBuffer();
 
 int main()
-{ /* introducir palabras de vocabulario en un fichero en disco, */
-  /* para su uso en el programa de preguntas de vocabulario alemán */
-  /* VERSIÓN FINAL */
-  FILE *puntFich;
+{ /* enter vocabulary words into a disk file to be read by flashcard program */
+  /* FINAL VERSION */
 
+  FILE *filePtr;
   char Espanol[16];
   char Aleman[16];
-  char elemento[2];
+  char spPrt[2];
 
-  char repetir[2], confirma[2];
-  int contador;
+  char again[2], confirm[2];
+  int counter;
 
-  puntFich = fopen("listpala.txt", "a");
-  if (puntFich == NULL)
+  filePtr = fopen("wordlist.txt", "a");
+  if (filePtr == NULL)
   {
-    printf("Error de Disco: no puede abrirse");
-    printf("fichero de palabras");
-    exit(0);
+    printf("Error de disco: No se puede abrir el archivo wordlist.txt .");
+    exit(1);
   }
 
   while (1 == 1)
   {
-    strcpy(Espanol, "      "); /* borrrar los restos que puedan  */
-    strcpy(Aleman, "      ");  /* haber en memoria */
-
+    strcpy(Espanol, "               "); /* blank out */
+    strcpy(Aleman, "               ");  /* garbage */
     printf("\n\n\n\n\n\n\n\n\n\n\n");
-    printf("\t\tINTRODUCCIÓN DE PALABRAS DE VOCABULARIO");
-    printf("\n\t\t------------------------------------");
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("Escriba la palabra en español > ");
+    printf("\t\t\tINGRESE LAS PALABRAS DEL VOCABULARIO");
+    printf("\n\t\t\t-----------------------------------");
+    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    printf("Ingrese la palabra en español > ");
     fgets(Espanol, sizeof(Espanol), stdin);
     Espanol[strcspn(Espanol, "\n")] = '\0';
     clearBuffer();
 
-    printf("\nEscriba la palabra en alemán > ");
+    printf("\nIngrese la palabra en alemán > ");
     fgets(Aleman, sizeof(Aleman), stdin);
     Aleman[strcspn(Aleman, "\n")] = '\0';
     clearBuffer();
 
     while (1 == 1)
     {
-      printf("\nEscriba el tipo de elemento gramatical que le\n"),
-      printf("corresponda(N=nombre, V=verbo, O=otros) > ");
-      fgets(elemento, sizeof(elemento), stdin);
-      elemento[0] = toupper(elemento[0]);
-      if (elemento[0] == 'N' || elemento[0] == 'V' || elemento[0] == 'O')
+      printf("\nIngrese el tipo de elemento gramatical");
+      printf("\n\tN-nombre, V-verbo, O-otro > ");
+      fgets(spPrt, sizeof(spPrt), stdin);
+      spPrt[strcspn(spPrt, "\n")] = '\0';
+      clearBuffer();
+
+      spPrt[0] = toupper(spPrt[0]);
+      if (spPrt[0] == 'N' || spPrt[0] == 'V' || spPrt[0] == 'O')
       {
         break;
       }
@@ -69,36 +63,35 @@ int main()
         putchar(7);
       }
     }
+    printf("\n¿Desea guardar esta entrada? (S/N) > ");
+    fgets(confirm, sizeof(confirm), stdin);
+    confirm[strcspn(confirm, "\n")] = '\0';
     clearBuffer();
 
-    printf("\n¿Desea archivar en disco estos datos? (S/N) > ");
-    fgets(confirma, sizeof(confirma), stdin);
-    if (toupper(confirma[0]) == 'S')
+    if (toupper(confirm[0]) == 'S')
     {
-      contador = 0;
-      while (contador < 16)
-      {
-        putc(Espanol[contador], puntFich);
-        contador = contador + 1;
-      }
-      contador = 0;
-      while (contador < 16)
-      {
-        putc(Aleman[contador], puntFich);
-        contador = contador + 1;
-      }
-      putc(elemento[0], puntFich);
+      fprintf(filePtr, "%s %s %s\n", Espanol, Aleman, spPrt);
     }
+
+    printf("\n¿Desea ingresar otra palabra? (S/N) > ");
+    fgets(again, sizeof(again), stdin);
+    again[strcspn(again, "\n")] = '\0';
     clearBuffer();
 
-    printf("\n¿Desea introducir otra palabra? (S/N) > ");
-    fgets(repetir, sizeof(repetir), stdin);
-    if (toupper(repetir[0]) != 'S')
+    if (toupper(again[0]) != 'S')
     {
       break;
     }
-    clearBuffer();
   }
-  fclose(puntFich);
+  fclose(filePtr);
+
   return 0;
+}
+
+void clearBuffer()
+{
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF)
+  {
+  }
 }
