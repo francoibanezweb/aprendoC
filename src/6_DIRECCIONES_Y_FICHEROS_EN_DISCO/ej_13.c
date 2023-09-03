@@ -213,7 +213,7 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
       printf("\n\n\n\n\n\n\n\n\n");
       printf("\t\t\t\t%s", spGe[wrdCntr].FOREIGN);
       printf("\n\n\n\n\n\n\n\n");
-      printf("¿Cuál es la traducción al Español? (doble enter) > ");
+      printf("¿Cuál es la traducción al Español? (doble Enter) > ");
 
       fgets(answer, sizeof(answer), stdin); /* Obtención de la respuesta del  */
       answer[strcspn(answer, "\n")] = '\0'; /* usuario, paso a mayúsculas */
@@ -263,7 +263,7 @@ void testword(char lang1[], char lang2[], char pos) /* preguntas al usuario */
       printf("\n\n\n\n\n\n\n\n\n");
       printf("\t\t\t\t%s", spGe[wrdCntr].Spanish);
       printf("\n\n\n\n\n\n\n\n");
-      printf("¿Cuál es la traducción al %s? (doble enter) > ",FOREIGN);
+      printf("¿Cuál es la traducción al %s? (doble Enter) > ",FOREIGN);
 
       fgets(answer, sizeof(answer), stdin);
       answer[strcspn(answer, "\n")] = '\0';
@@ -318,5 +318,3 @@ void clearBuffer()
   {
   }
 }
-
-
